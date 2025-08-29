@@ -19,94 +19,29 @@ hearts.forEach(heart => {
 
 // part of copy
 
-const copies = document.querySelectorAll(".copy");
-const copyCount = document.getElementById("copy-count");
 
-copies.forEach(copy => {    
-    copy.addEventListener('click', function(e){
-        e.preventDefault()
-        let count = parseInt(copyCount.innerText)
+document.addEventListener("DOMContentLoaded", () => {
+
+    const copies = document.querySelectorAll(".copy");
+    const copyCount = document.getElementById("copy-count");
     
-        count++
+    copies.forEach(copy => {    
+        copy.addEventListener('click', function(e){
+            e.preventDefault()
+            let count = parseInt(copyCount.innerText)
+            count++
+            copyCount.innerText = count
     
-        copyCount.innerText = count
+            const urgent = copy.closest(".urgent")
+            const serviceNum = urgent.querySelector("h4").innerText
+        
+       
+       })
+    })
 })
 
-})
 
 
-// phone call part
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     const calls = document.querySelectorAll(".phone");
-    
-//     calls.forEach(item => {
-//         item.addEventListener('click', () => {
-//             const urgent = item.closest(".urgent") 
-//             const serviceName = urgent.querySelector("h3").innerText;
-//             const serviceNum = urgent.querySelector("h4").innerText
-//             alert('Calling' + serviceName + serviceNum + '...')
-//         })
-//     })
-// })
-
-
-
-// call using coin
-
-// const coinCount = document.getElementById("coin-count")
-
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     const calls = document.querySelectorAll(".phone");
-    
-//     calls.forEach(item => {
-//         item.addEventListener('click', () => {
-//             const urgent = item.closest(".urgent") 
-//             const serviceName = urgent.querySelector("h3").innerText;
-  
-            
-//             let available = parseInt(coinCount.innerText);
-//             if(available >= 20){
-//                 available -= 20
-//                 coinCount.innerText = available
-//                 alert('Calling' + serviceName + serviceNum + '...')
-//             }
-//             else{
-//                 alert('not enough coin for the next call')
-//             }
-
-//         })
-//     })
-// })
-
-
-
-
-
-// const coinCount = document.getElementById("coin-count");
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const calls = document.querySelectorAll(".phone");
-
-//     calls.forEach(item => {
-//         item.addEventListener('click', () => {
-//             const urgent = item.closest(".urgent");
-//             const serviceName = urgent.querySelector("h3").innerText;
-//             const serviceNum = urgent.querySelector("h4").innerText;
-
-//             let available = parseInt(coinCount.innerText);
-
-//             if (available >= 20) {
-//                 available -= 20;
-//                 coinCount.innerText = available;
-//                 alert('📞 Calling ' + serviceName + ' ' + serviceNum + '...');
-//             } else {
-//                 alert('❌ Not enough coin for the next call');
-//             }
-//         });
-//     });
-// });
 
 const coinCount = document.getElementById("coin-count");
 const historyList = document.getElementById("history-list");
@@ -141,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 alert('📞 Calling ' + serviceName + ' ' + serviceNum + '...');
             } else {
-                alert('❌ Not enough coin for the next call');
+                alert('❌ আপনার পর্যাপ্ত কয়েন নেই কল করতে কমপক্ষে ২০ কয়েন লাগবে।');
             }
         });
     });
