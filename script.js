@@ -55,7 +55,7 @@ const serviceNum = urgent.querySelector("h4").innerText;
 
         navigator.clipboard.writeText(serviceNum)
             .then(() => {
-                    alert('Copied: ' + serviceNum)
+                    alert('নম্বর কপি হয়েছে: ' + serviceNum)
                 })
        
        })
