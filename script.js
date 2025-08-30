@@ -6,7 +6,7 @@ const heartCount = document.getElementById("heart-count");
 hearts.forEach(heart => {    
     heart.addEventListener('click', function(e){
         e.preventDefault()
-        let count = parseInt(heartCount.innerText)
+        let count = parseInt(heartCount.innerText);
     
         count++
     
@@ -19,17 +19,17 @@ hearts.forEach(heart => {
 // part of copy
 document.addEventListener("DOMContentLoaded", () => {
 
-    const copies = document.querySelectorAll(".copy");
-    const copyCount = document.getElementById("copy-count");
+const copies = document.querySelectorAll(".copy");
+const copyCount = document.getElementById("copy-count");
     
-    copies.forEach(copy => {    
+copies.forEach(copy => {    
         copy.addEventListener('click', function(e){
             e.preventDefault()
-            let count = parseInt(copyCount.innerText)
+            let count = parseInt(copyCount.innerText);
             count++
             copyCount.innerText = count
     
-            const urgent = copy.closest(".urgent")
+            const urgent = copy.closest(".urgent");
             const serviceNum = urgent.querySelector("h4").innerText
         
        
@@ -41,31 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // part of paste
 
 document.addEventListener("DOMContentLoaded", () => {
-    const copies = document.querySelectorAll(".copy");
-    
-    copies.forEach(copy => {    
+
+const copies = document.querySelectorAll(".copy");
+copies.forEach(copy => {    
         copy.addEventListener('click', function(e){
-            e.preventDefault();
+            e.preventDefault()
 
-            // Find the parent .urgent
-            const urgent = copy.closest(".urgent");
-            if (!urgent) return;
+const urgent = copy.closest(".urgent");
+        if(!urgent){
+            return;
+        }            
+const serviceNum = urgent.querySelector("h4").innerText;
 
-            // Get number from h4
-            const serviceNum = urgent.querySelector("h4").innerText.trim();
-
-            // Copy to clipboard
-            navigator.clipboard.writeText(serviceNum)
-                .then(() => {
-                    alert('Copied: ' + serviceNum);
+        navigator.clipboard.writeText(serviceNum)
+            .then(() => {
+                    alert('Copied: ' + serviceNum)
                 })
-                .catch(err => {
-                    console.error("Failed to copy: ", err);
-                });
-        });
-    });
-});
-
+       
+       })
+    })  
+})
 
 
 
@@ -92,24 +87,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const time = new Date().toLocaleTimeString();
                 const historyItem = document.createElement("div");
-                historyItem.className = "flex justify-between items-center bg-gray-100 p-2 rounded-md";
+                historyItem.className = "flex justify-between items-center bg-gray-100 p-2 rounded-md"
                 historyItem.innerHTML = `
                     <div>
                         <p class="font-bold">${serviceName}</p>
                         <p class="text-sm">${serviceNum}</p>
                     </div>
                     <p class="text-xs">${time}</p>
-                `;
+                `
                 historyList.prepend(historyItem);
 
-                alert('📞 Calling ' + serviceName + ' ' + serviceNum + '...');
+                alert('📞 Calling ' + serviceName + ' ' + serviceNum + '...')
             } else {
-                alert('❌ আপনার পর্যাপ্ত কয়েন নেই কল করতে কমপক্ষে ২০ কয়েন লাগবে।');
+                alert('❌ আপনার পর্যাপ্ত কয়েন নেই কল করতে কমপক্ষে ২০ কয়েন লাগবে।')
             }
-        });
-    });
+        })
+    })
 
     clearHistoryBtn.addEventListener('click', () => {
-        historyList.innerHTML = "";
-    });
-});
+        historyList.innerHTML = ""
+    })
+})
