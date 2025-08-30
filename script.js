@@ -1,6 +1,5 @@
 
 // part of heart
-
 const hearts = document.querySelectorAll(".heart");
 const heartCount = document.getElementById("heart-count");
 
@@ -12,14 +11,12 @@ hearts.forEach(heart => {
         count++
     
         heartCount.innerText = count
+    })
 })
 
-})
 
 
 // part of copy
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const copies = document.querySelectorAll(".copy");
@@ -41,7 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
+// part of paste
 
+document.addEventListener("DOMContentLoaded", () => {
+    const copies = document.querySelectorAll(".copy");
+    
+    copies.forEach(copy => {    
+        copy.addEventListener('click', function(e){
+            e.preventDefault();
+
+            // Find the parent .urgent
+            const urgent = copy.closest(".urgent");
+            if (!urgent) return;
+
+            // Get number from h4
+            const serviceNum = urgent.querySelector("h4").innerText.trim();
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(serviceNum)
+                .then(() => {
+                    alert('Copied: ' + serviceNum);
+                })
+                .catch(err => {
+                    console.error("Failed to copy: ", err);
+                });
+        });
+    });
+});
+
+
+
+
+// part of call
 
 const coinCount = document.getElementById("coin-count");
 const historyList = document.getElementById("history-list");
